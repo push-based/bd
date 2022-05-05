@@ -133,3 +133,48 @@ Go to `index.original.html` and add `width` and `height` attributes to launcher 
 ```
 
 </details>
+    
+## Lazy loading images
+
+By default images are eagerly (always) loaded. We can change it by setting attribute `loading="lazy"` to images that are not critical.
+This avoids bootstrap and template evaluation time and will improve LCP metric.
+
+Go to `movie-list.component.ts` and add `loading="lazy"` to movie poster:
+
+```html
+<!-- Exercise 3: Add lazy loading here and improve it -->
+
+<img
+  class="aspectRatio-2-3 gradient"
+  [src]="movie?.imgUrl || 'assets/images/no_poster_available.jpg'"
+  [width]="movie.imgWidth"
+  [height]="movie.imgHeight"
+  alt="poster movie"
+  [title]="movie.title"
+  loading="lazy"
+/>
+```
+
+Our images are rendered in the list with `ngFor` directive. We can reduce layout shifts by loading first image eagerly.
+
+To do this modify img with following:
+
+```html
+<!-- Exercise 3: Add lazy loading here and improve it -->
+
+<img
+  class="aspectRatio-2-3 gradient"
+  [src]="movie?.imgUrl || 'assets/images/no_poster_available.jpg'"
+  [width]="movie.imgWidth"
+  [height]="movie.imgHeight"
+  alt="poster movie"
+  [title]="movie.title"
+  [attr.loading]="idx === 0 ? '' : 'lazy'"
+/>
+```
+
+### Pro tip
+
+- `<iframe>` tag also has `loading` attribute and can be optimized in the same way
+
+
