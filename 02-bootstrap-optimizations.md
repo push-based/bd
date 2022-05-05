@@ -183,7 +183,7 @@ This saves creation-time and destruction-time of the component and also render w
 Try to replace the current route configuration for `MovieListPageComponent` so that it can re-use a single route
 instead of having it configured twice.
 
-You should visit `app.routing.ts`. Change the `list` routing configuration so that it accepts `:type/:indefier` as arguments.
+You should visit `app.routing.ts`. Change the `list` routing configuration so that it accepts `:type/:identifier` as arguments.
 
 <details>
     <summary>show solution</summary>
